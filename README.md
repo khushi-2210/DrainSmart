@@ -109,6 +109,6 @@ Delhi (Ward-level granularity)
 ### Team
 Debug Thugs – Hack4Delhi 2025
 
-###⚠️ Disclaimer
+### ⚠️ Disclaimer
 DrainSmart is a prototype created for demonstration and evaluation purposes.
 Current data may be mocked or illustrative and should not be treated as official advisories.
