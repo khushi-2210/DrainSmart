@@ -1,4 +1,4 @@
-# DrainSmart 🌧️
+# DrainSmart 
 
 **DrainSmart** is a civic-tech platform designed to map and predict water-logging hotspots across Delhi using GIS-based visualization and data-driven risk analysis.
 
@@ -13,10 +13,16 @@ DrainSmart integrates rainfall, drainage, and urban infrastructure data to:
 - Improve citizen awareness and safety
 
 ## Tech Stack
-- Frontend: React.js, Leaflet.js, Tailwind CSS  
+- Frontend: React.js, Vite, TailwindCSS, Lucide React(icons) 
 - Backend: Node.js, Express.js  
-- Database: PostgreSQL + PostGIS  
-- Analytics: Python (optional)
+- Data & Analytics: Static ward-level risk data (JSON, mock data), Designed for future integration with GIS and analytics pipelines
+- Tools & Platform: Git & Github, VS code, npm
+
+## Future Scope
+- Interactive GIS maps using Leaflet.js / Mapbox
+- Spatial database integration with PostgreSQL + PostGIS
+- Predictive analytics using Python-based rainfall models
+- Real-time alerts and citizen reporting
 
 ## Team
-IEEE NSUT – Hack4Delhi 2025
+Debug Thugs – Hack4Delhi 2025

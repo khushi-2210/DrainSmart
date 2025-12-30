@@ -1,33 +1,56 @@
-import { Droplets } from 'lucide-react';
+import { Droplets, Sun, Moon } from "lucide-react";
+import { useTheme } from "../Context/ThemeContext.jsx";
 
 const NavBar = ({ activeView, setActiveView }) => {
+  const { theme, toggleTheme } = useTheme();
+
+  const navItems = [
+    { key: "home", label: "Home" },
+    { key: "map", label: "Map" },
+    { key: "analytics", label: "Analytics" },
+    { key: "admin", label: "Admin" },
+    { key: "citizen", label: "Citizen" },
+    { key: "about", label: "About" },
+  ];
+
   return (
-    <nav className="bg-slate-800 text-white shadow-lg">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between">
-        <div className="flex items-center gap-3">
-          <Droplets className="w-8 h-8 text-cyan-400" />
-          <div>
-            <h1 className="text-xl font-bold">MonsoonGuard</h1>
-            <p className="text-xs text-cyan-300">
-              Delhi Water-logging Risk Management System
-            </p>
-          </div>
+    <nav className="bg-white dark:bg-gray-900 border-b dark:border-gray-800">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        {/* Logo */}
+        <div className="flex items-center gap-2">
+          <Droplets className="w-7 h-7 text-blue-600" />
+          <span className="text-xl font-bold">DrainSmart</span>
         </div>
 
-        <div className="flex gap-1">
-          {['home','map','analytics','admin','citizen','about'].map(view => (
+        {/* Navigation */}
+        <div className="flex items-center gap-2">
+          {navItems.map((item) => (
             <button
-              key={view}
-              onClick={() => setActiveView(view)}
-              className={`px-4 py-2 rounded text-sm font-medium ${
-                activeView === view
-                  ? 'bg-cyan-600'
-                  : 'text-gray-300 hover:bg-slate-700'
-              }`}
+              key={item.key}
+              onClick={() => setActiveView(item.key)}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition
+                ${
+                  activeView === item.key
+                    ? "bg-blue-600 text-white"
+                    : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                }`}
             >
-              {view.charAt(0).toUpperCase() + view.slice(1)}
+              {item.label}
             </button>
           ))}
+
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="ml-3 p-2 rounded-lg border bg-white dark:bg-gray-800 dark:border-gray-700"
+            title="Toggle theme"
+          >
+            {theme === "dark" ? (
+              <Sun className="w-5 h-5 text-yellow-400" />
+            ) : (
+              <Moon className="w-5 h-5 text-gray-700" />
+            )}
+          </button>
         </div>
       </div>
     </nav>
