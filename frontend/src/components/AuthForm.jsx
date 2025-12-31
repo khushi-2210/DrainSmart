@@ -7,45 +7,42 @@ const AuthForm = ({ role, onAuthSuccess }) => {
   const [name, setName] = useState("");
 
   const API = import.meta.env.VITE_API_URL;
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const API = "http://localhost:5000";
 
-    const API = import.meta.env.VITE_API_URL;
+  const endpoint =
+    mode === "signup"
+      ? "/api/auth/signup"
+      : "/api/auth/login";
 
-    const endpoint =
-      mode === "signup"
-        ? `${API}/api/auth/signup`
-        : `${API}/api/auth/login`;
+  const payload =
+    mode === "signup"
+      ? { email, password, role: role.toLowerCase() }
+      : { email, password };
 
-    const payload =
-      mode === "signup"
-        ? { name, email, password, role: role.toLowerCase() }
-        : { email, password };
+  try {
+    const res = await fetch(`${API}${endpoint}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
 
-    try {
-      const res = await fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+    const data = await res.json();
 
-      if (!res.ok) {
-        const err = await res.json();
-        throw new Error(err.message || "Auth failed");
-      }
-
-      const data = await res.json();
-
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("role", data.role);
-
-      onAuthSuccess();
-    } catch (err) {
-      alert(err.message);
+    if (!res.ok) {
+      throw new Error(data.message || "Auth failed");
     }
-  };
 
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("role", data.role);
+
+    onAuthSuccess();
+  } catch (err) {
+    alert(err.message);
+  }
+};
 
   return (
     <div className="max-w-md mx-auto bg-white p-8 rounded-xl border border-gray-200 shadow-lg">

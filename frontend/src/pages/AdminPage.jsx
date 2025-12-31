@@ -14,11 +14,21 @@ const AdminPage = () => {
   useEffect(() => {
     if (!isAuthenticated) return;
 
-    fetch(`${API}/api/wards`)
-      .then((res) => res.json())
+    const token = localStorage.getItem("token");
+
+    fetch(`${API}/api/wards`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch wards");
+        return res.json();
+      })
       .then(setWards)
       .catch(console.error);
   }, [isAuthenticated]);
+
 
   if (!isAuthenticated) {
     return (
@@ -84,4 +94,3 @@ const AdminPage = () => {
 };
 
 export default AdminPage;
-
