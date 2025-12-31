@@ -1,22 +1,44 @@
-# DrainSmart 🌧️
+# DrainSmart – Frontend 
 
-**DrainSmart** is a civic-tech platform designed to map and predict water-logging hotspots across Delhi using GIS-based visualization and data-driven risk analysis.
+This branch contains the **frontend implementation** of **DrainSmart**, a civic-tech platform for visualizing and analyzing urban water-logging risks in Delhi.
 
-## Problem
-Delhi experiences severe water-logging during monsoons due to inadequate drainage planning and lack of proactive risk assessment at the ward level.
+The frontend focuses on **user experience, data visualization, and accessibility**, and is designed to integrate seamlessly with backend APIs.
 
-## Solution
-DrainSmart integrates rainfall, drainage, and urban infrastructure data to:
-- Identify ward-wise water-logging risks
-- Visualize hotspots on an interactive map
-- Support proactive municipal decision-making
-- Improve citizen awareness and safety
+---
+
+## Features Implemented
+
+- Home dashboard with project overview and statistics
+- Ward-wise Risk Map (UI-based visualization)
+- Analytics dashboard for vulnerable wards
+- Citizen Portal (mock sign-in / sign-up)
+- Admin Portal (mock authentication)
+- Emergency contacts section (always accessible)
+- Light / Dark mode with persistent preference
+- Responsive and accessible UI
+
+---
 
 ## Tech Stack
-- Frontend: React.js, Leaflet.js, Tailwind CSS  
-- Backend: Node.js, Express.js  
-- Database: PostgreSQL + PostGIS  
-- Analytics: Python (optional)
 
-## Team
-IEEE NSUT – Hack4Delhi 2025
+- **React.js** (Vite)
+- **Tailwind CSS**
+- **Lucide Icons**
+- React Context API (theme management)
+- JavaScript (ES6+)
+
+> Note: Authentication and data are currently mocked for demonstration purposes.
+
+---
+
+## Folder Structure
+
+```text
+src/
+├── components/
+├── pages/
+├── context/
+├── data/
+├── utils/
+├── App.jsx
+└── main.jsx
